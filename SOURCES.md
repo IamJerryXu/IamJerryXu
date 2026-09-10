@@ -1,8 +1,8 @@
 # Design and sources
 
-The current homepage is a compact text introduction. The earlier illustrated
-draft is no longer displayed; its artwork and source records remain in this
-repository for reference.
+The homepage retains its illustrated header, contact navigation, and closing.
+Project cards are not displayed because the pinned repositories below the
+profile already provide those entries.
 
 This is Yongxue Xu's GitHub profile. Biography, interests and contact links are
 drawn from the owner's public [academic homepage](https://jerrysnow.me/).
