@@ -121,7 +121,6 @@ def build():
             size='mobile' if mobile else 'desktop'
             w,h=(450,212) if mobile else (900,226)
             b=f'<rect width="{w}" height="{h}" rx="14" fill="{p["bg"]}"/>'
-            b+=label('Yongxue Xu  /  徐永雪',2,32,21,p['secondary'],REGULAR)
             b+=label("Hi, I'm Jerry.",0,96 if mobile else 105,49 if mobile else 62,p['ink'])
             b+=label('Video generation & world models',2,141 if mobile else 155,23 if mobile else 28,p['accent'],REGULAR)
             b+=label('4D understanding  ·  Research tools',2,176 if mobile else 192,21 if mobile else 24,p['secondary'],REGULAR)
@@ -134,7 +133,7 @@ def build():
                     b+=snow(647,49,12,p['accent'])+snow(872,167,9,p['line'])
             elif mobile: b+=world_scene(338,14,.37,p)
             else: b+=world_scene(620,0,1,p)
-            save(f'hero-{size}-{mode}',w,h,'Yongxue Xu — Hi, I’m Jerry. Video generation, world models and 4D understanding.',b)
+            save(f'hero-{size}-{mode}',w,h,'Hi, I’m Jerry. Video generation, world models and 4D understanding.',b)
             copy_block('bio', ["I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI.", "I'm interested in generation as a way to understand the visual world — how it changes, and how we can interact with it. I also build research tools with the team, exploring auto-research and AI builds AI."], mobile, mode, p)
             copy_block('connect', ["Happy to exchange ideas and collaborate — find my work and WeChat on my homepage."], mobile, mode, p)
             for key,title,kind,category,desc,lines in PROJECTS:

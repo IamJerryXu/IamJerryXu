@@ -2,7 +2,7 @@
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/hero-mobile-dark.svg">
   <source media="(max-width: 600px)" srcset="assets/hero-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/hero-desktop-dark.svg">
-  <img src="assets/hero-desktop-light.svg" width="100%" alt="Yongxue Xu (徐永雪), also known as Jerry. Video generation, world models and 4D understanding.">
+  <img src="assets/hero-desktop-light.svg" width="100%" alt="Hi, I'm Jerry. Video generation, world models and 4D understanding.">
 </picture>
 
 <picture>
