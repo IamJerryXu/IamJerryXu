@@ -2,6 +2,7 @@
 from pathlib import Path
 from html import escape
 import os
+from base64 import b64encode
 from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
 
@@ -9,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'assets'
 FONT_DIR = Path(os.environ.get('PROFILE_SYSTEM_FONTS', '/System/Library/Fonts/Supplemental'))
 COMIC = TTFont(OUT / 'fonts/ComicNeue-Bold.ttf')
+REGULAR = TTFont(OUT / 'fonts/ComicNeue-Regular.ttf')
 SANS = TTFont(FONT_DIR / 'Trebuchet MS.ttf')
 CJK = TTFont(FONT_DIR / 'Songti.ttc', fontNumber=1)
 
@@ -27,6 +29,28 @@ def label(value, x, y, size, color, font=COMIC):
 
 def save(name, w, h, title, body):
     (OUT / f'{name}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img"><title>{escape(title)}</title>{body}</svg>\n')
+
+def wrapped(value, width, size, font=REGULAR):
+    scale=size/font['head'].unitsPerEm
+    cmap=font.getBestCmap()
+    def measure(s): return sum(font['hmtx'][cmap[ord(c)]][0] for c in s)*scale
+    lines=[]
+    for word in value.split():
+        if not lines or measure(lines[-1]+' '+word)>width: lines.append(word)
+        else: lines[-1]+=' '+word
+    return lines
+
+def copy_block(name, paragraphs, mobile, mode, p):
+    width=450 if mobile else 900
+    size=21 if mobile else 23
+    y=25
+    body=''
+    for paragraph in paragraphs:
+        for line in wrapped(paragraph,width-12,size):
+            body+=label(line,2,y,size,p['ink'],REGULAR)
+            y+=30 if mobile else 32
+        y+=8
+    save(f'{name}-{"mobile" if mobile else "desktop"}-{mode}',width,y-15,' '.join(paragraphs),body)
 
 def snow(x,y,r,c):
     lines = ''.join(f'<path transform="rotate({a} {x} {y})" d="M{x} {y-r}v{2*r}m{-r*.25} {-r*1.7} {r*.25} {r*.25} {r*.25} {-r*.25}"/>' for a in [0,60,120])
@@ -68,21 +92,25 @@ PROJECTS = [
 
 def build():
     for mode in ['light','dark']:
+        mascot = OUT / ('jerry-scarf-dark.png' if mode == 'dark' else 'jerry-scarf.png')
+        mascot_data = b64encode(mascot.read_bytes()).decode('ascii') if mascot.exists() else None
         p = dict(bg='#FFFFFF', ink='#24495B', secondary='#506B78', accent='#4F8FAA', green='#456F60', line='#A6CAD6', soft='#E9F3F6', mint='#D6E8DC', wash='#F3F8FA', border='#D5E4E9') if mode=='light' else dict(bg='#0D1117', ink='#D5EAF2', secondary='#A0B7C3', accent='#8AC4D9', green='#A5CFB8', line='#43636E', soft='#213843', mint='#345749', wash='#15252E', border='#2D4652')
         for mobile in [False,True]:
             size='mobile' if mobile else 'desktop'
-            w,h=(450,240) if mobile else (900,240)
+            w,h=(450,212) if mobile else (900,226)
             b=f'<rect width="{w}" height="{h}" rx="14" fill="{p["bg"]}"/>'
-            b+=label('Yongxue Xu  /  徐永雪',24 if mobile else 34,40,21,p['secondary'],SANS)
-            b+=label("Hi, I'm Jerry.",24 if mobile else 32,101 if mobile else 112,52 if mobile else 66,p['ink'])
-            b+=label('Video generation & world models',24 if mobile else 36,145 if mobile else 159,22 if mobile else 28,p['accent'])
-            b+=label('4D understanding  ·  Research tools',24 if mobile else 36,177 if mobile else 196,18 if mobile else 23,p['secondary'],SANS)
-            if mobile:
-                b+=world_scene(338,26,.37,p)+snow(382,202,9,p['line'])
-                b+=f'<path d="M26 218h297" stroke="{p["border"]}"/>'
-            else:
-                b+=world_scene(620,12,1,p)+f'<path d="M36 225h521" stroke="{p["border"]}"/>'
+            b+=label('Yongxue Xu  /  徐永雪',2,32,21,p['secondary'],REGULAR)
+            b+=label("Hi, I'm Jerry.",0,96 if mobile else 105,49 if mobile else 62,p['ink'])
+            b+=label('Video generation & world models',2,141 if mobile else 155,23 if mobile else 28,p['accent'],REGULAR)
+            b+=label('4D understanding  ·  Research tools',2,176 if mobile else 192,21 if mobile else 24,p['secondary'],REGULAR)
+            if mascot_data:
+                mx,my,mw,mh=(329,13,118,118) if mobile else (624,0,262,222)
+                b+=f'<image x="{mx}" y="{my}" width="{mw}" height="{mh}" href="data:image/png;base64,{mascot_data}" preserveAspectRatio="xMidYMid meet"/>'
+            elif mobile: b+=world_scene(338,14,.37,p)
+            else: b+=world_scene(620,0,1,p)
             save(f'hero-{size}-{mode}',w,h,'Yongxue Xu — Hi, I’m Jerry. Video generation, world models and 4D understanding.',b)
+            copy_block('bio', ["I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI.", "I study generative models for visual understanding and build research tools with friends."], mobile, mode, p)
+            copy_block('connect', ["Always happy to exchange ideas and collaborate. You'll find more about my work and my WeChat contact on my homepage."], mobile, mode, p)
             for key,title,kind,category,desc,lines in PROJECTS:
                 w,h=(450,150) if mobile else (900,98)
                 b=f'<rect x="1" y="1" width="{w-2}" height="{h-6}" rx="12" fill="{p["bg"]}" stroke="{p["border"]}"/>'
@@ -104,7 +132,7 @@ def build():
         b=icon('paper',0,2,.60,p)+label('Selected work',48,32,28,p['ink'])
         b+=f'<path d="M240 30h360" stroke="{p["border"]}" stroke-width="1.3"/>'
         save(f'heading-work-{mode}',600,48,'Selected work',b)
-        b=snow(24,28,10,p['accent'])+label('Never economize on your future.',48,36,26,p['secondary'])
+        b=snow(16,28,8,p['accent'])+label('Never economize on your future.',36,36,25,p['secondary'],REGULAR)
         save(f'closing-{mode}',500,62,'Never economize on your future.',b)
     print('Built profile artwork for desktop/mobile and light/dark themes.')
 
