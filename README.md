@@ -22,7 +22,7 @@
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/connect-mobile-dark.svg">
   <source media="(max-width: 600px)" srcset="assets/connect-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/connect-desktop-dark.svg">
-  <img src="assets/connect-desktop-light.svg" width="100%" alt="Always happy to exchange ideas and collaborate. You'll find more about my work and my WeChat contact on my homepage.">
+  <img src="assets/connect-desktop-light.svg" width="100%" alt="Happy to exchange ideas and collaborate — find my work and WeChat on my homepage.">
 </picture>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/closing-dark.svg"><img src="assets/closing-light.svg" width="500" alt="Never economize on your future."></picture>

@@ -2,6 +2,7 @@
 from pathlib import Path
 from html import escape
 import os
+import re
 from base64 import b64encode
 from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
@@ -42,15 +43,35 @@ def wrapped(value, width, size, font=REGULAR):
 
 def copy_block(name, paragraphs, mobile, mode, p):
     width=450 if mobile else 900
-    size=21 if mobile else 23
-    y=25
+    size=19 if mobile else 20
+    y=22
     body=''
+    line_height=26 if mobile else 27
+    highlights={'Sun Yat-sen University':p['green'], 'InkMind.AI':p['green'],
+                'generative models':p['ink'], 'research tools':p['ink']}
+    def measure(value,font):
+        cmap=font.getBestCmap()
+        return sum(font['hmtx'][cmap[ord(c)]][0] for c in value)*size/font['head'].unitsPerEm
     for paragraph in paragraphs:
-        for line in wrapped(paragraph,width-12,size):
-            body+=label(line,2,y,size,p['ink'],REGULAR)
-            y+=30 if mobile else 32
-        y+=8
-    save(f'{name}-{"mobile" if mobile else "desktop"}-{mode}',width,y-15,' '.join(paragraphs),body)
+        spans=[(m.start(),m.end(),color) for phrase,color in highlights.items()
+               for m in re.finditer(re.escape(phrase),paragraph)] if name=='bio' else []
+        x=2
+        for token in re.finditer(r'\S+',paragraph):
+            word=token.group()
+            accent=next((c for a,b,c in spans if a<=token.start()<b),None)
+            font=COMIC if accent else REGULAR
+            color=accent or (p['secondary'] if name=='connect' else p['ink'])
+            advance=measure(word,font)
+            gap=measure(' ',REGULAR) if x>2 else 0
+            if x+gap+advance>width-10:
+                x=2
+                gap=0
+                y+=line_height
+            x+=gap
+            body+=label(word,x,y,size,color,font)
+            x+=advance
+        y+=line_height+5
+    save(f'{name}-{"mobile" if mobile else "desktop"}-{mode}',width,y-12,' '.join(paragraphs),body)
 
 def snow(x,y,r,c):
     lines = ''.join(f'<path transform="rotate({a} {x} {y})" d="M{x} {y-r}v{2*r}m{-r*.25} {-r*1.7} {r*.25} {r*.25} {r*.25} {-r*.25}"/>' for a in [0,60,120])
@@ -110,7 +131,7 @@ def build():
             else: b+=world_scene(620,0,1,p)
             save(f'hero-{size}-{mode}',w,h,'Yongxue Xu — Hi, I’m Jerry. Video generation, world models and 4D understanding.',b)
             copy_block('bio', ["I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI.", "I study generative models for visual understanding and build research tools with friends."], mobile, mode, p)
-            copy_block('connect', ["Always happy to exchange ideas and collaborate. You'll find more about my work and my WeChat contact on my homepage."], mobile, mode, p)
+            copy_block('connect', ["Happy to exchange ideas and collaborate — find my work and WeChat on my homepage."], mobile, mode, p)
             for key,title,kind,category,desc,lines in PROJECTS:
                 w,h=(450,150) if mobile else (900,98)
                 b=f'<rect x="1" y="1" width="{w-2}" height="{h-6}" rx="12" fill="{p["bg"]}" stroke="{p["border"]}"/>'
@@ -132,8 +153,8 @@ def build():
         b=icon('paper',0,2,.60,p)+label('Selected work',48,32,28,p['ink'])
         b+=f'<path d="M240 30h360" stroke="{p["border"]}" stroke-width="1.3"/>'
         save(f'heading-work-{mode}',600,48,'Selected work',b)
-        b=snow(16,28,8,p['accent'])+label('Never economize on your future.',36,36,25,p['secondary'],REGULAR)
-        save(f'closing-{mode}',500,62,'Never economize on your future.',b)
+        b=snow(14,23,7,p['line'])+label('Never economize on your future.',32,30,22,p['secondary'],REGULAR)
+        save(f'closing-{mode}',500,49,'Never economize on your future.',b)
     print('Built profile artwork for desktop/mobile and light/dark themes.')
 
 if __name__=='__main__': build()
