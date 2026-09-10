@@ -48,7 +48,8 @@ def copy_block(name, paragraphs, mobile, mode, p):
     body=''
     line_height=26 if mobile else 27
     highlights={'Sun Yat-sen University':p['green'], 'InkMind.AI':p['green'],
-                'generation':p['ink'], 'understand the visual world':p['ink']}
+                'generation':p['ink'], 'understand the visual world':p['ink'],
+                'research tools':p['ink']}
     def measure(value,font):
         cmap=font.getBestCmap()
         return sum(font['hmtx'][cmap[ord(c)]][0] for c in value)*size/font['head'].unitsPerEm
@@ -134,7 +135,7 @@ def build():
             elif mobile: b+=world_scene(338,14,.37,p)
             else: b+=world_scene(620,0,1,p)
             save(f'hero-{size}-{mode}',w,h,'Yongxue Xu — Hi, I’m Jerry. Video generation, world models and 4D understanding.',b)
-            copy_block('bio', ["I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI.", "I'm interested in generation as a way to understand the visual world — how it changes, and how we can interact with it."], mobile, mode, p)
+            copy_block('bio', ["I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI.", "I'm interested in generation as a way to understand the visual world — how it changes, and how we can interact with it. I also explore research tools."], mobile, mode, p)
             copy_block('connect', ["Happy to exchange ideas and collaborate — find my work and WeChat on my homepage."], mobile, mode, p)
             for key,title,kind,category,desc,lines in PROJECTS:
                 w,h=(450,150) if mobile else (900,98)

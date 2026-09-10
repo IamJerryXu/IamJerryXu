@@ -1,6 +1,8 @@
 # Design and sources
 
-The homepage retains its illustrated header, contact navigation, and closing.
+The homepage retains its illustrated header and contact navigation, and ends
+with the invitation to exchange ideas and collaborate. The closing motto is
+no longer displayed.
 Project cards are not displayed because the pinned repositories below the
 profile already provide those entries.
 

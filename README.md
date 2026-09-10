@@ -9,7 +9,7 @@
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/bio-mobile-dark.svg">
   <source media="(max-width: 600px)" srcset="assets/bio-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/bio-desktop-dark.svg">
-  <img src="assets/bio-desktop-light.svg" width="100%" alt="I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI. I'm interested in generation as a way to understand the visual world — how it changes, and how we can interact with it.">
+  <img src="assets/bio-desktop-light.svg" width="100%" alt="I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI. I'm interested in generation as a way to understand the visual world — how it changes, and how we can interact with it. I also explore research tools.">
 </picture>
 
 <p>
@@ -24,5 +24,3 @@
   <source media="(prefers-color-scheme: dark)" srcset="assets/connect-desktop-dark.svg">
   <img src="assets/connect-desktop-light.svg" width="100%" alt="Happy to exchange ideas and collaborate — find my work and WeChat on my homepage.">
 </picture>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/closing-dark.svg"><img src="assets/closing-light.svg" width="500" alt="Never economize on your future."></picture>
