@@ -25,11 +25,12 @@ original SVG artwork; the former globe and filmstrip are no longer displayed.
 
 ## Jerry illustration
 
-The owner requested Jerry Mouse in the palette of the existing AstraDraw mouse:
-light creamy apricot fur, cream muzzle, pastel pink ears, a sky-blue scarf and
-dark navy contours. The illustrations were created with the built-in image
-generation tool, using the owner's public AstraDraw welcome artwork as a style
-reference. Jerry is a third-party fictional character; this personal illustration
+The owner requested the actual mouse design from the existing AstraDraw welcome
+artwork, rather than a new character in a similar palette. The illustrations were
+edited with the built-in image generation tool, using that welcome artwork as
+the edit target: retain its round face, large oval eyes, oversized pink ears,
+creamy apricot fur, blue scarf, pencil and drawing pose. Jerry is a third-party
+fictional character; this personal illustration
 does not imply affiliation or grant rights to the character.
 
 Final project assets: `assets/jerry-scarf.png` (white background) and
@@ -37,13 +38,16 @@ Final project assets: `assets/jerry-scarf.png` (white background) and
 not editable vector characters. Profile text remains separately generated SVG
 lettering with equivalent accessible text in the README image descriptions.
 
-Final prompt specification: Jerry Mouse wearing a sky-blue scarf, holding a blue
-pencil beside an open cream notebook, cheerful three-quarter seated pose. Match
-AstraDraw's light creamy apricot fur, pale pink ears and crisp dark-navy comic
-contours; gentle cel shading, no plastic 3D, no text, no busy diagrams, and no
-extra characters. Keep at most two tiny pale-blue snowflakes. The white-background
-version removes the initial checkerboard draft; the dark variant changes only
-the canvas to `#0D1117` while preserving the character colors and composition.
+Final prompt specification (built-in edit mode, precise-object-edit): Extract
+only the exact central mouse, its blue pencil, scarf, and sheet with three colored
+squares from the AstraDraw welcome banner. Preserve its face, expression,
+head-to-body proportions, colors, drawing pose and dark navy contours. Remove
+the surrounding snowflake friend, video icon, chart, outside arrow and star.
+Reframe compactly on white; no text, checkerboard, extra accessories, or character
+redesign. The matching dark edit changes only the exterior background to
+`#0D1117`, keeping the character and light paper unchanged.
+Two light-blue SVG snowflakes sit around the mouse in the header, matching the
+profile's existing snowflake motif without adding another large illustration.
 
 ## Fonts
 

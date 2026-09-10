@@ -48,7 +48,7 @@ def copy_block(name, paragraphs, mobile, mode, p):
     body=''
     line_height=26 if mobile else 27
     highlights={'Sun Yat-sen University':p['green'], 'InkMind.AI':p['green'],
-                'generative models':p['ink'], 'research tools':p['ink']}
+                'generation':p['ink'], 'understand the visual world':p['ink']}
     def measure(value,font):
         cmap=font.getBestCmap()
         return sum(font['hmtx'][cmap[ord(c)]][0] for c in value)*size/font['head'].unitsPerEm
@@ -127,10 +127,14 @@ def build():
             if mascot_data:
                 mx,my,mw,mh=(329,13,118,118) if mobile else (624,0,262,222)
                 b+=f'<image x="{mx}" y="{my}" width="{mw}" height="{mh}" href="data:image/png;base64,{mascot_data}" preserveAspectRatio="xMidYMid meet"/>'
+                if mobile:
+                    b+=snow(336,33,7,p['accent'])+snow(439,112,5,p['line'])
+                else:
+                    b+=snow(647,49,12,p['accent'])+snow(872,167,9,p['line'])
             elif mobile: b+=world_scene(338,14,.37,p)
             else: b+=world_scene(620,0,1,p)
             save(f'hero-{size}-{mode}',w,h,'Yongxue Xu — Hi, I’m Jerry. Video generation, world models and 4D understanding.',b)
-            copy_block('bio', ["I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI.", "I study generative models for visual understanding and build research tools with friends."], mobile, mode, p)
+            copy_block('bio', ["I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI.", "I'm interested in generation as a way to understand the visual world — how it changes, and how we can interact with it."], mobile, mode, p)
             copy_block('connect', ["Happy to exchange ideas and collaborate — find my work and WeChat on my homepage."], mobile, mode, p)
             for key,title,kind,category,desc,lines in PROJECTS:
                 w,h=(450,150) if mobile else (900,98)
