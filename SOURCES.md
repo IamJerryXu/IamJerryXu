@@ -8,9 +8,8 @@ profile already provide those entries.
 
 This is Yongxue Xu's GitHub profile. Biography, interests and contact links are
 drawn from the owner's public [academic homepage](https://jerrysnow.me/).
-The research-tools paragraph follows the homepage's InkMind.AI introduction:
-vibe coding, RSI and auto-research workflows, AI-assisted question formulation,
-system building, evaluation and iteration, and the exploration of "AI builds AI".
+The research-tools sentence condenses the homepage's InkMind.AI introduction
+into team-built research tools, auto-research, and the exploration of "AI builds AI".
 Project descriptions link to the owner's public repositories. No private drafts,
 reference libraries, or unpublished research assets are included.
 
