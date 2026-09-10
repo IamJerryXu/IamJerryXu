@@ -9,7 +9,7 @@
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/bio-mobile-dark.svg">
   <source media="(max-width: 600px)" srcset="assets/bio-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/bio-desktop-dark.svg">
-  <img src="assets/bio-desktop-light.svg" width="100%" alt="I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI. I'm interested in generation as a way to understand the visual world — how it changes, and how we can interact with it. I also explore research tools.">
+  <img src="assets/bio-desktop-light.svg" width="100%" alt="I'm an undergraduate at Sun Yat-sen University and a member of InkMind.AI. I'm interested in generation as a way to understand the visual world — how it changes, and how we can interact with it. With the team, I build research tools through vibe coding and explore RSI and auto-research workflows that help AI frame questions, build systems, evaluate results, and iterate. We see AI builds AI as a direction worth exploring.">
 </picture>
 
 <p>
