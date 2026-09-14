@@ -114,7 +114,7 @@ PROJECTS = [
 
 def build():
     for mode in ['light','dark']:
-        mascot = OUT / ('jerry-scarf-dark.png' if mode == 'dark' else 'jerry-scarf.png')
+        mascot = OUT / f'hachiware-open-eyes-{mode}.png'
         mascot_data = b64encode(mascot.read_bytes()).decode('ascii') if mascot.exists() else None
         p = dict(bg='#FFFFFF', ink='#24495B', secondary='#506B78', accent='#4F8FAA', green='#456F60', line='#A6CAD6', soft='#E9F3F6', mint='#D6E8DC', wash='#F3F8FA', border='#D5E4E9') if mode=='light' else dict(bg='#0D1117', ink='#D5EAF2', secondary='#A0B7C3', accent='#8AC4D9', green='#A5CFB8', line='#43636E', soft='#213843', mint='#345749', wash='#15252E', border='#2D4652')
         for mobile in [False,True]:
@@ -127,10 +127,6 @@ def build():
             if mascot_data:
                 mx,my,mw,mh=(329,13,118,118) if mobile else (624,0,262,222)
                 b+=f'<image x="{mx}" y="{my}" width="{mw}" height="{mh}" href="data:image/png;base64,{mascot_data}" preserveAspectRatio="xMidYMid meet"/>'
-                if mobile:
-                    b+=snow(336,33,7,p['accent'])+snow(439,112,5,p['line'])
-                else:
-                    b+=snow(647,49,12,p['accent'])+snow(872,167,9,p['line'])
             elif mobile: b+=world_scene(338,14,.37,p)
             else: b+=world_scene(620,0,1,p)
             save(f'hero-{size}-{mode}',w,h,'Hi, I’m Jerry. Video generation, world models and 4D understanding.',b)
