@@ -1,13 +1,13 @@
 <p>
 <picture>
-  <source media="(max-width: 600px)" srcset="assets/research-header-mobile.png">
-  <img src="assets/research-header.png" width="100%" alt="Yongxue Xu (Jerry) — World models and embodied intelligence">
+  <source media="(max-width: 600px)" srcset="assets/research-header-mobile-v2.png">
+  <img src="assets/research-header-v2.png" width="100%" alt="Yongxue Xu (Jerry) — World models and embodied intelligence">
 </picture>
 </p>
 
-I am an undergraduate at **Sun Yat-sen University** and a research intern at **SimpleAI's Simple World Lab**. My research focuses on **world models, video generation, and embodied intelligence**.
+I am an undergraduate at Sun Yat-sen University and a research intern at SimpleAI's Simple World Lab. My research focuses on world models, video generation, and embodied intelligence.
 
-At SimpleAI, I work on embodied foundation models and frontier research in Physical Intelligence. I also develop AI-assisted research tools with **InkMind.AI**.
+At SimpleAI, I work on embodied foundation models and frontier research in Physical Intelligence. I also develop AI-assisted research tools with InkMind.AI.
 
 I am currently **applying for PhD positions in Hong Kong**.
 

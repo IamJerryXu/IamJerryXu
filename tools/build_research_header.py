@@ -4,9 +4,9 @@ from base64 import b64encode
 ROOT = Path(__file__).resolve().parents[1]
 photo = b64encode((ROOT / 'assets/hong-kong.jpg').read_bytes()).decode()
 for mobile in (False, True):
-    width,height=(600,280) if mobile else (1200,320)
-    name_size=48 if mobile else 60
-    margin=32 if mobile else 48
+    width,height=(600,250) if mobile else (1200,300)
+    name_size=58 if mobile else 76
+    margin=34 if mobile else 52
     image_width=900 if mobile else 1200
     svg=f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
 <title id="title">Yongxue Xu · Jerry</title>
@@ -20,12 +20,10 @@ for mobile in (False, True):
 <image href="data:image/jpeg;base64,{photo}" x="{width-image_width}" y="0" width="{image_width}" height="{height}" preserveAspectRatio="xMidYMid slice"/>
 <rect width="{width}" height="{height}" fill="url(#shade)"/>
 <rect width="{width}" height="{height}" fill="url(#floor)"/>
-<g font-family="Arial,Helvetica,sans-serif">
-<text x="{margin}" y="{56 if mobile else 63}" font-size="12" letter-spacing="2.8" fill="#d8e3e9">RESEARCH / YONGXUE XU</text>
-<text x="{margin-2}" y="{133 if mobile else 156}" font-size="{name_size}" font-weight="600" letter-spacing="-1.6" fill="#ffffff">Yongxue Xu<tspan font-size="{23 if mobile else 28}" font-weight="400" letter-spacing="0" fill="#d7e2e8"> / Jerry</tspan></text>
-<text x="{margin}" y="{176 if mobile else 205}" font-size="{21 if mobile else 24}" fill="#e4edf1">World models &amp; embodied intelligence</text>
-<path d="M{margin} {220 if mobile else 258}h28" stroke="#b8cdd7" stroke-width="2"/>
-<text x="{margin+42}" y="{225 if mobile else 263}" font-size="13" letter-spacing=".4" fill="#d3e0e6">Sun Yat-sen University · SimpleAI</text>
+<g font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="400">
+<text x="{margin-2}" y="{111 if mobile else 137}" font-family="Baskerville,Georgia,serif" font-size="{name_size}" font-weight="400" letter-spacing="-.5" fill="#ffffff">Yongxue Xu</text>
+<text x="{margin}" y="{155 if mobile else 184}" font-size="{21 if mobile else 23}" letter-spacing=".2" fill="#e4edf1">World models &amp; embodied intelligence</text>
+<text x="{margin}" y="{206 if mobile else 240}" font-size="{15 if mobile else 16}" letter-spacing=".5" fill="#c6d6de">Sun Yat-sen University · SimpleAI</text>
 </g></g></svg>'''
-    (ROOT / 'assets' / ('research-header-mobile.svg' if mobile else 'research-header.svg')).write_text(svg)
+    (ROOT / 'assets' / ('research-header-mobile-v2.svg' if mobile else 'research-header-v2.svg')).write_text(svg)
 print('Built desktop and mobile research mastheads.')
