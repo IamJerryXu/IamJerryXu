@@ -117,10 +117,10 @@ CONTACTS = [
     ('linkedin', 'LinkedIn', 'https://www.linkedin.com/in/%E6%B0%B8%E9%9B%AA-%E5%BE%90-6340a4415/'),
     ('email', 'Email', 'mailto:xuyx85@mail2.sysu.edu.cn'),
     ('x', 'Twitter', 'https://x.com/JerryXuri'),
-    ('rss', 'RSS', 'https://jerrysnow.me/blog/feed.xml'),
+    ('rednote', 'Rednote', 'https://xhslink.cn/o/60IapESrKEh'),
 ]
 
-BRAND_COLORS = {'home': '#3779cf', 'playground': '#11998e', 'scholar': '#4285f4', 'linkedin': '#0a66c2', 'email': '#d95c4b', 'x': '#171717', 'rss': '#ee802f'}
+BRAND_COLORS = {'home': '#3779cf', 'playground': '#11998e', 'scholar': '#4285f4', 'linkedin': '#0a66c2', 'email': '#d95c4b', 'x': '#171717', 'rednote': '#ff2442'}
 
 for name, label, _ in CONTACTS:
     icon = (OUT / 'contact' / f'blog-{name}.svg').read_text().split('viewBox="0 0 24 24">', 1)[1].strip().removesuffix('</svg>')
@@ -129,7 +129,7 @@ for name, label, _ in CONTACTS:
         icon_color = '#f0f3f6' if name == 'x' and mode == 'dark' else BRAND_COLORS[name]
         type = Type()
         content, advance = type.draw(label, 30, 21, 16, color)
-        width = round(advance + 37 + (20 if name == 'rss' else 0))
+        width = round(advance + 37 + (20 if name == 'rednote' else 0))
         content = f'<g transform="translate(0 4) scale(.916667)">{icon.replace("#648eaa", icon_color)}</g>' + content
         (OUT / 'contact' / f'blog-label-{name}-{mode}-v4.svg').write_text(type.svg(width, 32, label, content))
 
