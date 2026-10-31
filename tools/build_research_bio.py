@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'assets'
 FONTS = {weight: TTFont(subprocess.check_output(['kpsewhich', f'texgyrepagella-{style}.otf'], text=True).strip()) for weight, style in [(400, 'regular'), (700, 'bold')]}
 PARAGRAPHS = [
-    'Undergraduate at Sun Yat-sen University · Research Intern at SimpleAI',
+    'Undergraduate at Sun Yat-sen University & Research Intern at SimpleAI',
     'My research focuses on world models, video generation, and embodied intelligence. At SimpleAI’s Simple World Lab, I work on embodied foundation models and frontier research in Physical Intelligence. I also develop AI-assisted research tools with InkMind.AI.',
     'I am currently applying for PhD positions in Hong Kong.',
 ]
@@ -102,7 +102,7 @@ def biography(layout, width, size, inset, mode):
             x += gap + word_width
         y += line_height + size * .36
     height = round(y - line_height + size * .1)
-    (OUT / f'research-bio-{layout}-{mode}-v3.svg').write_text(type.svg(width, height, ALT, ''.join(body)))
+    (OUT / f'research-bio-{layout}-{mode}-v4.svg').write_text(type.svg(width, height, ALT, ''.join(body)))
 
 
 LAYOUTS = [('narrow', 480, 31, 27.2), ('mobile', 600, 31, 34), ('compact', 800, 27, 800 * 52 / 1200), ('medium', 960, 26, 960 * 52 / 1200), ('desktop', 1200, 24, 52)]
@@ -138,10 +138,10 @@ readme += '\n<div>\n'
 conditions = [('narrow', '(max-width: 360px)'), ('mobile', '(max-width: 480px)'), ('compact', '(max-width: 1000px)'), ('medium', '(max-width: 1199px)')]
 for mode in PALETTES:
     fragment = f'#gh-{mode}-mode-only'
-    readme += f'<a href="assets/research-bio-desktop-{mode}-v3.svg{fragment}"><picture>\n'
+    readme += f'<a href="assets/research-bio-desktop-{mode}-v4.svg{fragment}"><picture>\n'
     for layout, condition in conditions:
-        readme += f'  <source media="{condition}" srcset="assets/research-bio-{layout}-{mode}-v3.svg{fragment}">\n'
-    readme += f'  <img src="assets/research-bio-desktop-{mode}-v3.svg{fragment}" width="100%" alt="{escape(ALT, quote=True)}">\n</picture></a>\n'
+        readme += f'  <source media="{condition}" srcset="assets/research-bio-{layout}-{mode}-v4.svg{fragment}">\n'
+    readme += f'  <img src="assets/research-bio-desktop-{mode}-v4.svg{fragment}" width="100%" alt="{escape(ALT, quote=True)}">\n</picture></a>\n'
 readme += '</div>\n\n<p align="center">\n'
 for name, label, href in CONTACTS:
     for mode in (['light', 'dark'] if name == 'x' else ['brand']):
