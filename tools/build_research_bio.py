@@ -116,18 +116,22 @@ CONTACTS = [
     ('scholar', 'Google Scholar', 'https://scholar.google.com/citations?user=8PtwUrkAAAAJ&hl=en'),
     ('linkedin', 'LinkedIn', 'https://www.linkedin.com/in/%E6%B0%B8%E9%9B%AA-%E5%BE%90-6340a4415/'),
     ('email', 'Email', 'mailto:xuyx85@mail2.sysu.edu.cn'),
-    ('x', 'X', 'https://x.com/JerryXuri'),
+    ('x', 'Twitter', 'https://x.com/JerryXuri'),
     ('rss', 'RSS', 'https://jerrysnow.me/blog/feed.xml'),
 ]
 
+BRAND_COLORS = {'home': '#3779cf', 'playground': '#11998e', 'scholar': '#4285f4', 'linkedin': '#0a66c2', 'email': '#d95c4b', 'x': '#171717', 'rss': '#ee802f'}
+
 for name, label, _ in CONTACTS:
     icon = (OUT / 'contact' / f'blog-{name}.svg').read_text().split('viewBox="0 0 24 24">', 1)[1].strip().removesuffix('</svg>')
-    for mode, color in [('neutral', '#648eaa')]:
+    for mode in (['light', 'dark'] if name == 'x' else ['brand']):
+        color = '#648eaa'
+        icon_color = '#f0f3f6' if name == 'x' and mode == 'dark' else BRAND_COLORS[name]
         type = Type()
         content, advance = type.draw(label, 25, 21, 16, color)
         width = round(advance + 32)
-        content = f'<g transform="translate(0 6) scale(.75)">{icon.replace("#648eaa", color)}</g>' + content
-        (OUT / 'contact' / f'blog-label-{name}-{mode}-v1.svg').write_text(type.svg(width, 32, label, content))
+        content = f'<g transform="translate(0 6) scale(.75)">{icon.replace("#648eaa", icon_color)}</g>' + content
+        (OUT / 'contact' / f'blog-label-{name}-{mode}-v2.svg').write_text(type.svg(width, 32, label, content))
 
 readme = (ROOT / 'README.md').read_text().split('</div>', 1)[0] + '</div>\n'
 readme += '\n<div>\n'
@@ -140,9 +144,12 @@ for mode in PALETTES:
     readme += f'  <img src="assets/research-bio-desktop-{mode}-v3.svg{fragment}" width="100%" alt="{escape(ALT, quote=True)}">\n</picture></a>\n'
 readme += '</div>\n\n<p align="center">\n'
 for name, label, href in CONTACTS:
-    readme += f'  <a href="{escape(href, quote=True)}">'
-    readme += f'<img src="assets/contact/blog-label-{name}-neutral-v1.svg" height="32" alt="{label}">'
-    readme += '</a>&nbsp;\n'
+    for mode in (['light', 'dark'] if name == 'x' else ['brand']):
+        fragment = f'#gh-{mode}-mode-only' if name == 'x' else ''
+        readme += f'  <a href="{escape(href + fragment, quote=True)}">'
+        readme += f'<img src="assets/contact/blog-label-{name}-{mode}-v2.svg" height="32" alt="{label}">'
+        readme += '</a>'
+    readme += '&nbsp;\n'
 readme += '</p>\n'
 (ROOT / 'README.md').write_text(readme)
 print('Built 10 responsive biography images and 7 Blog-style contact labels.')

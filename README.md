@@ -23,11 +23,11 @@
 </div>
 
 <p align="center">
-  <a href="https://jerrysnow.me/"><img src="assets/contact/blog-label-home-neutral-v1.svg" height="32" alt="Homepage"></a>&nbsp;
-  <a href="https://jerrysnow.me/blog/"><img src="assets/contact/blog-label-playground-neutral-v1.svg" height="32" alt="Playground"></a>&nbsp;
-  <a href="https://scholar.google.com/citations?user=8PtwUrkAAAAJ&amp;hl=en"><img src="assets/contact/blog-label-scholar-neutral-v1.svg" height="32" alt="Google Scholar"></a>&nbsp;
-  <a href="https://www.linkedin.com/in/%E6%B0%B8%E9%9B%AA-%E5%BE%90-6340a4415/"><img src="assets/contact/blog-label-linkedin-neutral-v1.svg" height="32" alt="LinkedIn"></a>&nbsp;
-  <a href="mailto:xuyx85@mail2.sysu.edu.cn"><img src="assets/contact/blog-label-email-neutral-v1.svg" height="32" alt="Email"></a>&nbsp;
-  <a href="https://x.com/JerryXuri"><img src="assets/contact/blog-label-x-neutral-v1.svg" height="32" alt="X"></a>&nbsp;
-  <a href="https://jerrysnow.me/blog/feed.xml"><img src="assets/contact/blog-label-rss-neutral-v1.svg" height="32" alt="RSS"></a>&nbsp;
+  <a href="https://jerrysnow.me/"><img src="assets/contact/blog-label-home-brand-v2.svg" height="32" alt="Homepage"></a>&nbsp;
+  <a href="https://jerrysnow.me/blog/"><img src="assets/contact/blog-label-playground-brand-v2.svg" height="32" alt="Playground"></a>&nbsp;
+  <a href="https://scholar.google.com/citations?user=8PtwUrkAAAAJ&amp;hl=en"><img src="assets/contact/blog-label-scholar-brand-v2.svg" height="32" alt="Google Scholar"></a>&nbsp;
+  <a href="https://www.linkedin.com/in/%E6%B0%B8%E9%9B%AA-%E5%BE%90-6340a4415/"><img src="assets/contact/blog-label-linkedin-brand-v2.svg" height="32" alt="LinkedIn"></a>&nbsp;
+  <a href="mailto:xuyx85@mail2.sysu.edu.cn"><img src="assets/contact/blog-label-email-brand-v2.svg" height="32" alt="Email"></a>&nbsp;
+  <a href="https://x.com/JerryXuri#gh-light-mode-only"><img src="assets/contact/blog-label-x-light-v2.svg" height="32" alt="Twitter"></a>  <a href="https://x.com/JerryXuri#gh-dark-mode-only"><img src="assets/contact/blog-label-x-dark-v2.svg" height="32" alt="Twitter"></a>&nbsp;
+  <a href="https://jerrysnow.me/blog/feed.xml"><img src="assets/contact/blog-label-rss-brand-v2.svg" height="32" alt="RSS"></a>&nbsp;
 </p>
