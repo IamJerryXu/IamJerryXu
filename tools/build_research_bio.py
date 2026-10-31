@@ -17,7 +17,7 @@ PARAGRAPHS = [
 ]
 ALT = ' '.join(PARAGRAPHS)
 HIGHLIGHTS = {0: ['Sun Yat-sen University', 'SimpleAI'], 3: ['applying for PhD positions in Hong Kong']}
-PALETTES = {'light': ('#38576b', '#244e6b'), 'dark': ('#b8cedc', '#d2e5ef')}
+PALETTES = {'light': ('#292e33', '#14191f'), 'dark': ('#d0d7de', '#edf2f7')}
 
 
 def kern(font, left, right):
@@ -103,7 +103,7 @@ def biography(layout, width, size, inset, mode):
             x += gap + word_width
         y += line_height + size * .58
     height = round(y - line_height + size * .1)
-    (OUT / f'research-bio-{layout}-{mode}-v1.svg').write_text(type.svg(width, height, ALT, ''.join(body)))
+    (OUT / f'research-bio-{layout}-{mode}-v2.svg').write_text(type.svg(width, height, ALT, ''.join(body)))
 
 
 LAYOUTS = [('narrow', 480, 32, 27.2), ('mobile', 600, 32, 34), ('compact', 800, 28, 800 * 52 / 1200), ('medium', 960, 27, 960 * 52 / 1200), ('desktop', 1200, 25, 52)]
@@ -125,10 +125,10 @@ readme += '\n<div>\n'
 conditions = [('narrow', '(max-width: 360px)'), ('mobile', '(max-width: 480px)'), ('compact', '(max-width: 1000px)'), ('medium', '(max-width: 1199px)')]
 for mode in PALETTES:
     fragment = f'#gh-{mode}-mode-only'
-    readme += f'<a href="assets/research-bio-desktop-{mode}-v1.svg{fragment}"><picture>\n'
+    readme += f'<a href="assets/research-bio-desktop-{mode}-v2.svg{fragment}"><picture>\n'
     for layout, condition in conditions:
-        readme += f'  <source media="{condition}" srcset="assets/research-bio-{layout}-{mode}-v1.svg{fragment}">\n'
-    readme += f'  <img src="assets/research-bio-desktop-{mode}-v1.svg{fragment}" width="100%" alt="{escape(ALT, quote=True)}">\n</picture></a>\n'
+        readme += f'  <source media="{condition}" srcset="assets/research-bio-{layout}-{mode}-v2.svg{fragment}">\n'
+    readme += f'  <img src="assets/research-bio-desktop-{mode}-v2.svg{fragment}" width="100%" alt="{escape(ALT, quote=True)}">\n</picture></a>\n'
 readme += '</div>\n\n<p align="center">\n'
 links = [('home', 'Homepage', 'https://jerrysnow.me/'), ('scholar', 'Google Scholar', 'https://scholar.google.com/citations?user=8PtwUrkAAAAJ&hl=en'), ('email', 'Email', 'mailto:xuyx85@mail2.sysu.edu.cn'), ('x', 'X', 'https://x.com/JerryXuri')]
 for name, label, href in links:
