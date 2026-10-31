@@ -29,5 +29,5 @@
   <a href="https://www.linkedin.com/in/%E6%B0%B8%E9%9B%AA-%E5%BE%90-6340a4415/"><img src="assets/contact/blog-label-linkedin-brand-v4.svg" height="32" alt="LinkedIn"></a>&nbsp;
   <a href="mailto:xuyx85@mail2.sysu.edu.cn"><img src="assets/contact/blog-label-email-brand-v4.svg" height="32" alt="Email"></a>&nbsp;
   <a href="https://x.com/JerryXuri#gh-light-mode-only"><img src="assets/contact/blog-label-x-light-v4.svg" height="32" alt="Twitter"></a>  <a href="https://x.com/JerryXuri#gh-dark-mode-only"><img src="assets/contact/blog-label-x-dark-v4.svg" height="32" alt="Twitter"></a>&nbsp;
-  <a href="https://xhslink.cn/o/60IapESrKEh"><img src="assets/contact/blog-label-rednote-brand-v4.svg" height="32" alt="Rednote"></a>&nbsp;
+  <a href="https://xhslink.cn/o/60IapESrKEh"><img src="assets/contact/blog-label-rednote-brand-v5.svg" height="32" alt="Rednote"></a>&nbsp;
 </p>
