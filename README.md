@@ -1,7 +1,7 @@
 <div>
 <picture>
-  <source media="(max-width: 600px)" srcset="assets/research-header-mobile-v7.png">
-  <img src="assets/research-header-v7.png" width="100%" alt="Yongxue Xu (Jerry) — World models and embodied intelligence">
+  <source media="(max-width: 600px)" srcset="assets/research-header-mobile-v8.png">
+  <img src="assets/research-header-v8.png" width="100%" alt="Yongxue Xu (Jerry) — World models and embodied intelligence">
 </picture>
 </div>
 

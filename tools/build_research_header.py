@@ -36,8 +36,8 @@ for mobile in (False, True):
 <g font-family="Pagella,Palatino,serif" font-weight="400">
 <text x="{margin-2}" y="{111 if mobile else 137}" font-family="Pagella,Palatino,serif" font-size="{name_size}" font-weight="700" letter-spacing="-.5" fill="#244e6b">Yongxue Xu</text>
 <text x="{margin}" y="{155 if mobile else 184}" font-size="{21 if mobile else 23}" letter-spacing=".2" fill="#305974">World models &amp; embodied intelligence</text>
-<image x="{margin}" y="{179 if mobile else 211}" width="{48 if mobile else 56}" height="{48 if mobile else 56}" href="data:image/png;base64,{seal}"/>
+<image x="{margin}" y="{174 if mobile else 205}" width="{58 if mobile else 68}" height="{58 if mobile else 68}" href="data:image/png;base64,{seal}"/>
 <image x="{margin + (72 if mobile else 82)}" y="{181 if mobile else 213.5}" width="{180 if mobile else 210}" height="{44 if mobile else 51}" href="data:image/png;base64,{logo}"/>
 </g></g></svg>'''
-    (ROOT / 'assets' / ('research-header-mobile-v7.svg' if mobile else 'research-header-v7.svg')).write_text(svg)
+    (ROOT / 'assets' / ('research-header-mobile-v8.svg' if mobile else 'research-header-v8.svg')).write_text(svg)
 print('Built desktop and mobile research mastheads.')
