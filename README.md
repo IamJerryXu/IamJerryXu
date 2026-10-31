@@ -1,9 +1,14 @@
-# Yongxue Xu
+<p>
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/research-header-mobile.png">
+  <img src="assets/research-header.png" width="100%" alt="Yongxue Xu (Jerry) — World models and embodied intelligence">
+</picture>
+</p>
 
-I am an undergraduate student in Intelligent Science and Technology at [Sun Yat-sen University](https://www.sysu.edu.cn/). My research interests include video generation, world models, and multimodal spatiotemporal understanding.
+I am an undergraduate at **Sun Yat-sen University** and a research intern at **SimpleAI's Simple World Lab**. My research focuses on **world models, video generation, and embodied intelligence**.
 
-I am a research intern at [SimpleAI's Simple World Lab](https://cloud.simpleai.tech/simple-world-lab/), working on embodied foundation models and generative approaches to embodied intelligence. I am also a member of [InkMind.AI](https://inkmind-ai.com/), where I develop tools and workflows for AI-assisted research.
+At SimpleAI, I work on embodied foundation models and frontier research in Physical Intelligence. I also develop AI-assisted research tools with **InkMind.AI**.
 
-[Homepage](https://jerrysnow.me/) · [Google Scholar](https://scholar.google.com/citations?user=8PtwUrkAAAAJ&hl=en) · [Email](mailto:xuyx85@mail2.sysu.edu.cn)
+I am currently **applying for PhD positions in Hong Kong**.
 
-<img src="assets/hong-kong.jpg" width="560" alt="Hong Kong cityscape">
+[Homepage](https://jerrysnow.me/) &nbsp; · &nbsp; [Google Scholar](https://scholar.google.com/citations?user=8PtwUrkAAAAJ&hl=en) &nbsp; · &nbsp; [Email](mailto:xuyx85@mail2.sysu.edu.cn) &nbsp; · &nbsp; [X](https://x.com/JerryXuri)
