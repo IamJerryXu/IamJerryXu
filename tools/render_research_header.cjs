@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 (async () => {
   const browser = await chromium.launch({headless:true, ...(process.env.CHROME_PATH ? {executablePath:process.env.CHROME_PATH} : {})});
-  for (const [name,width,height] of [['research-header-v5',1200,300],['research-header-mobile-v5',600,250]]) {
+  for (const [name,width,height] of [['research-header-v6',1200,300],['research-header-mobile-v6',600,250]]) {
     const svg = path.join(__dirname,'..','assets',name+'.svg');
     const page = await browser.newPage({viewport:{width,height}, deviceScaleFactor:2});
     await page.setContent('<style>body{margin:0}svg{display:block}</style>'+fs.readFileSync(svg,'utf8'));

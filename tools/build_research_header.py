@@ -23,17 +23,21 @@ for mobile in (False, True):
 <style>{fonts}</style>
 <linearGradient id="shade"><stop offset="0" stop-color="#dceffc" stop-opacity=".97"/><stop offset=".48" stop-color="#dceffc" stop-opacity=".89"/><stop offset=".76" stop-color="#dceffc" stop-opacity=".39"/><stop offset="1" stop-color="#dceffc" stop-opacity=".14"/></linearGradient>
 <linearGradient id="floor" x2="0" y2="1"><stop offset="0" stop-color="#87c5ed" stop-opacity=".26"/><stop offset="1" stop-color="#87c5ed" stop-opacity=".06"/></linearGradient>
+<linearGradient id="blend" x1="0" y1="0" x2="0" y2="1"><stop offset=".88" stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+<mask id="soft-bottom"><rect width="{width}" height="{height}" fill="url(#blend)"/></mask>
 <clipPath id="frame"><rect width="{width}" height="{height}" rx="8"/></clipPath>
 </defs>
 <g clip-path="url(#frame)">
+<g mask="url(#soft-bottom)">
 <image href="data:image/jpeg;base64,{photo}" x="{width-image_width}" y="0" width="{image_width}" height="{height}" preserveAspectRatio="xMidYMid slice"/>
 <rect width="{width}" height="{height}" fill="url(#shade)"/>
 <rect width="{width}" height="{height}" fill="url(#floor)"/>
+</g>
 <g font-family="Pagella,Palatino,serif" font-weight="400">
 <text x="{margin-2}" y="{111 if mobile else 137}" font-family="Pagella,Palatino,serif" font-size="{name_size}" font-weight="700" letter-spacing="-.5" fill="#244e6b">Yongxue Xu</text>
 <text x="{margin}" y="{155 if mobile else 184}" font-size="{21 if mobile else 23}" letter-spacing=".2" fill="#305974">World models &amp; embodied intelligence</text>
 <image x="{margin}" y="{179 if mobile else 211}" width="{48 if mobile else 56}" height="{48 if mobile else 56}" href="data:image/png;base64,{seal}"/>
 <image x="{margin + (72 if mobile else 82)}" y="{181 if mobile else 213.5}" width="{180 if mobile else 210}" height="{44 if mobile else 51}" href="data:image/png;base64,{logo}"/>
 </g></g></svg>'''
-    (ROOT / 'assets' / ('research-header-mobile-v5.svg' if mobile else 'research-header-v5.svg')).write_text(svg)
+    (ROOT / 'assets' / ('research-header-mobile-v6.svg' if mobile else 'research-header-v6.svg')).write_text(svg)
 print('Built desktop and mobile research mastheads.')
