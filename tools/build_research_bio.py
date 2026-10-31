@@ -110,14 +110,24 @@ for layout, width, size, inset in LAYOUTS:
     for mode in PALETTES:
         biography(layout, width, size, inset, mode)
 
-for name, label in [('home', 'Homepage'), ('scholar', 'Google Scholar'), ('email', 'Email'), ('x', 'X')]:
-    icon = (OUT / 'contact' / f'{name}.svg').read_text().split('viewBox="0 0 24 24">', 1)[1].strip().removesuffix('</svg>')
+CONTACTS = [
+    ('home', 'Homepage', 'https://jerrysnow.me/'),
+    ('playground', 'Playground', 'https://jerrysnow.me/blog/'),
+    ('scholar', 'Google Scholar', 'https://scholar.google.com/citations?user=8PtwUrkAAAAJ&hl=en'),
+    ('linkedin', 'LinkedIn', 'https://www.linkedin.com/in/%E6%B0%B8%E9%9B%AA-%E5%BE%90-6340a4415/'),
+    ('email', 'Email', 'mailto:xuyx85@mail2.sysu.edu.cn'),
+    ('x', 'X', 'https://x.com/JerryXuri'),
+    ('rss', 'RSS', 'https://jerrysnow.me/blog/feed.xml'),
+]
+
+for name, label, _ in CONTACTS:
+    icon = (OUT / 'contact' / f'blog-{name}.svg').read_text().split('viewBox="0 0 24 24">', 1)[1].strip().removesuffix('</svg>')
     for mode, color in [('neutral', '#648eaa')]:
         type = Type()
         content, advance = type.draw(label, 25, 21, 16, color)
         width = round(advance + 32)
         content = f'<g transform="translate(0 6) scale(.75)">{icon.replace("#648eaa", color)}</g>' + content
-        (OUT / 'contact' / f'pagella-{name}-{mode}-v1.svg').write_text(type.svg(width, 32, label, content))
+        (OUT / 'contact' / f'blog-label-{name}-{mode}-v1.svg').write_text(type.svg(width, 32, label, content))
 
 readme = (ROOT / 'README.md').read_text().split('</div>', 1)[0] + '</div>\n'
 readme += '\n<div>\n'
@@ -129,11 +139,10 @@ for mode in PALETTES:
         readme += f'  <source media="{condition}" srcset="assets/research-bio-{layout}-{mode}-v3.svg{fragment}">\n'
     readme += f'  <img src="assets/research-bio-desktop-{mode}-v3.svg{fragment}" width="100%" alt="{escape(ALT, quote=True)}">\n</picture></a>\n'
 readme += '</div>\n\n<p align="center">\n'
-links = [('home', 'Homepage', 'https://jerrysnow.me/'), ('scholar', 'Google Scholar', 'https://scholar.google.com/citations?user=8PtwUrkAAAAJ&hl=en'), ('email', 'Email', 'mailto:xuyx85@mail2.sysu.edu.cn'), ('x', 'X', 'https://x.com/JerryXuri')]
-for name, label, href in links:
+for name, label, href in CONTACTS:
     readme += f'  <a href="{escape(href, quote=True)}">'
-    readme += f'<img src="assets/contact/pagella-{name}-neutral-v1.svg" height="32" alt="{label}">'
+    readme += f'<img src="assets/contact/blog-label-{name}-neutral-v1.svg" height="32" alt="{label}">'
     readme += '</a>&nbsp;\n'
 readme += '</p>\n'
 (ROOT / 'README.md').write_text(readme)
-print('Built 10 responsive biography images and 4 contact labels.')
+print('Built 10 responsive biography images and 7 Blog-style contact labels.')
