@@ -128,10 +128,10 @@ for name, label, _ in CONTACTS:
         color = '#648eaa'
         icon_color = '#f0f3f6' if name == 'x' and mode == 'dark' else BRAND_COLORS[name]
         type = Type()
-        content, advance = type.draw(label, 25, 21, 16, color)
-        width = round(advance + 32)
-        content = f'<g transform="translate(0 6) scale(.75)">{icon.replace("#648eaa", icon_color)}</g>' + content
-        (OUT / 'contact' / f'blog-label-{name}-{mode}-v2.svg').write_text(type.svg(width, 32, label, content))
+        content, advance = type.draw(label, 30, 21, 16, color)
+        width = round(advance + 37)
+        content = f'<g transform="translate(0 4) scale(.916667)">{icon.replace("#648eaa", icon_color)}</g>' + content
+        (OUT / 'contact' / f'blog-label-{name}-{mode}-v3.svg').write_text(type.svg(width, 32, label, content))
 
 readme = (ROOT / 'README.md').read_text().split('</div>', 1)[0] + '</div>\n'
 readme += '\n<div>\n'
@@ -147,7 +147,7 @@ for name, label, href in CONTACTS:
     for mode in (['light', 'dark'] if name == 'x' else ['brand']):
         fragment = f'#gh-{mode}-mode-only' if name == 'x' else ''
         readme += f'  <a href="{escape(href + fragment, quote=True)}">'
-        readme += f'<img src="assets/contact/blog-label-{name}-{mode}-v2.svg" height="32" alt="{label}">'
+        readme += f'<img src="assets/contact/blog-label-{name}-{mode}-v3.svg" height="32" alt="{label}">'
         readme += '</a>'
     readme += '&nbsp;\n'
 readme += '</p>\n'
