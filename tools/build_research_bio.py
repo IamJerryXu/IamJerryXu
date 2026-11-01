@@ -16,7 +16,7 @@ PARAGRAPHS = [
     'I am currently applying for PhD positions in Hong Kong.',
 ]
 ALT = ' '.join(' '.join(PARAGRAPHS).split())
-BIO_VERSION = 'v9'
+BIO_VERSION = 'v10'
 HIGHLIGHTS = {0: ['Sun Yat-sen University', 'SimpleAI'], 2: ['applying for PhD positions in Hong Kong']}
 PALETTES = {'light': ('#41474e', '#14191f'), 'dark': ('#d0d7de', '#edf2f7')}
 
@@ -113,7 +113,8 @@ def biography(layout, width, size, inset, mode):
     color, strong = PALETTES[mode]
     mobile = width <= 600
     hero = width * (250 / 600 if mobile else 300 / 1200)
-    y, line_height = hero + size * 1.05 + 6, size * 1.42
+    lift = width * (10 / 600 if mobile else 18 / 1200)
+    y, line_height = hero + size * 1.05 + 6 - lift, size * 1.42
     body = []
     for index, paragraph in enumerate(PARAGRAPHS):
         spans = [(m.start(), m.end()) for phrase in HIGHLIGHTS.get(index, []) for m in re.finditer(re.escape(phrase), paragraph)]
