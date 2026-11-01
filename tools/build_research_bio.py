@@ -16,7 +16,7 @@ PARAGRAPHS = [
     'I am currently applying for PhD positions in Hong Kong.',
 ]
 ALT = ' '.join(' '.join(PARAGRAPHS).split())
-BIO_VERSION = 'v8'
+BIO_VERSION = 'v9'
 HIGHLIGHTS = {0: ['Sun Yat-sen University', 'SimpleAI'], 2: ['applying for PhD positions in Hong Kong']}
 PALETTES = {'light': ('#41474e', '#14191f'), 'dark': ('#d0d7de', '#edf2f7')}
 
@@ -94,7 +94,7 @@ def profile_art(type, width, height, mobile, mode):
     def data(name, mime):
         return f'data:{mime};base64,' + b64encode((OUT / name).read_bytes()).decode()
     # One photograph and one fade cover the masthead and biography continuously.
-    type.defs['scene'] = f'''<linearGradient id="shade"><stop offset="0" stop-color="#dceffc" stop-opacity=".97"/><stop offset=".48" stop-color="#dceffc" stop-opacity=".78"/><stop offset=".76" stop-color="#dceffc" stop-opacity=".26"/><stop offset="1" stop-color="#dceffc" stop-opacity=".08"/></linearGradient>
+    type.defs['scene'] = f'''<linearGradient id="shade"><stop offset="0" stop-color="#dceffc" stop-opacity=".79"/><stop offset=".48" stop-color="#dceffc" stop-opacity=".66"/><stop offset=".76" stop-color="#dceffc" stop-opacity=".26"/><stop offset="1" stop-color="#dceffc" stop-opacity=".08"/></linearGradient>
 <linearGradient id="fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="{fade_end}"><stop offset="0" stop-color="white"/><stop offset="{hero*.68/fade_end}" stop-color="white"/><stop offset="{hero/fade_end}" stop-color="white" stop-opacity=".26"/><stop offset="{(hero+(fade_end-hero)*.45)/fade_end}" stop-color="white" stop-opacity=".09"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
 <mask id="scene-fade"><rect width="{width}" height="{height}" fill="url(#fade)"/></mask>
 <clipPath id="frame"><rect width="{width}" height="{height}" rx="{8*scale}"/></clipPath>'''
