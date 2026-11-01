@@ -1,6 +1,7 @@
 """Build responsive, outlined Pagella biography and independent contact links."""
 from pathlib import Path
 from html import escape
+from base64 import b64encode
 import re
 import subprocess
 from fontTools.ttLib import TTFont
@@ -15,7 +16,7 @@ PARAGRAPHS = [
     'I am currently applying for PhD positions in Hong Kong.',
 ]
 ALT = ' '.join(' '.join(PARAGRAPHS).split())
-BIO_VERSION = 'v7'
+BIO_VERSION = 'v8'
 HIGHLIGHTS = {0: ['Sun Yat-sen University', 'SimpleAI'], 2: ['applying for PhD positions in Hong Kong']}
 PALETTES = {'light': ('#41474e', '#14191f'), 'dark': ('#d0d7de', '#edf2f7')}
 
@@ -82,10 +83,37 @@ class Type:
         return f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img"><title>{escape(title)}</title><defs>{"".join(self.defs.values())}</defs>{content}</svg>\n'
 
 
+def profile_art(type, width, height, mobile, mode):
+    scale = width / (600 if mobile else 1200)
+    hero = (250 if mobile else 300) * scale
+    margin = (34 if mobile else 52) * scale
+    photo_width = (900 if mobile else 1200) * scale
+    photo_height = photo_width * 3679 / 5517
+    photo_y = (hero - photo_height) / 2
+    fade_end = min(height, photo_y + photo_height)
+    def data(name, mime):
+        return f'data:{mime};base64,' + b64encode((OUT / name).read_bytes()).decode()
+    # One photograph and one fade cover the masthead and biography continuously.
+    type.defs['scene'] = f'''<linearGradient id="shade"><stop offset="0" stop-color="#dceffc" stop-opacity=".97"/><stop offset=".48" stop-color="#dceffc" stop-opacity=".78"/><stop offset=".76" stop-color="#dceffc" stop-opacity=".26"/><stop offset="1" stop-color="#dceffc" stop-opacity=".08"/></linearGradient>
+<linearGradient id="fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="{fade_end}"><stop offset="0" stop-color="white"/><stop offset="{hero*.68/fade_end}" stop-color="white"/><stop offset="{hero/fade_end}" stop-color="white" stop-opacity=".26"/><stop offset="{(hero+(fade_end-hero)*.45)/fade_end}" stop-color="white" stop-opacity=".09"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+<mask id="scene-fade"><rect width="{width}" height="{height}" fill="url(#fade)"/></mask>
+<clipPath id="frame"><rect width="{width}" height="{height}" rx="{8*scale}"/></clipPath>'''
+    art = f'''<g clip-path="url(#frame)"><g mask="url(#scene-fade)"><image href="{data('hong-kong-profile.jpg','image/jpeg')}" x="{width-photo_width}" y="{photo_y}" width="{photo_width}" height="{photo_height}"/><rect width="{width}" height="{height}" fill="url(#shade)"/><rect width="{width}" height="{height}" fill="#87c5ed" opacity=".10"/></g></g>'''
+    for text, x, y, size, color, weight in [
+        ('Yongxue Xu', margin-2*scale, (111 if mobile else 137)*scale, (54 if mobile else 68)*scale, '#244e6b', 700),
+        ('World models & embodied intelligence', margin, (155 if mobile else 184)*scale, (21 if mobile else 23)*scale, '#305974', 400),
+    ]:
+        art += type.draw(text,x,y,size,color,weight)[0]
+    art += f'''<image x="{margin}" y="{(174 if mobile else 205)*scale}" width="{(58 if mobile else 68)*scale}" height="{(58 if mobile else 68)*scale}" href="{data('sysu-logo.png','image/png')}"/><image x="{margin+(72 if mobile else 82)*scale}" y="{(181 if mobile else 213.5)*scale}" width="{(180 if mobile else 210)*scale}" height="{(44 if mobile else 51)*scale}" href="{data('simpleai-logo.png','image/png')}"/>'''
+    return art
+
+
 def biography(layout, width, size, inset, mode):
     type = Type()
     color, strong = PALETTES[mode]
-    y, line_height = size * 1.05, size * 1.42
+    mobile = width <= 600
+    hero = width * (250 / 600 if mobile else 300 / 1200)
+    y, line_height = hero + size * 1.05 + 6, size * 1.42
     body = []
     for index, paragraph in enumerate(PARAGRAPHS):
         spans = [(m.start(), m.end()) for phrase in HIGHLIGHTS.get(index, []) for m in re.finditer(re.escape(phrase), paragraph)]
@@ -109,7 +137,7 @@ def biography(layout, width, size, inset, mode):
             x += gap + word_width
         y += line_height + size * .36
     height = round(y - line_height + size * .1)
-    (OUT / f'research-bio-{layout}-{mode}-{BIO_VERSION}.svg').write_text(type.svg(width, height, ALT, ''.join(body)))
+    (OUT / f'research-bio-{layout}-{mode}-{BIO_VERSION}.svg').write_text(type.svg(width, height, 'Yongxue Xu. ' + ALT, profile_art(type, width, height, mobile, mode) + ''.join(body)))
 
 
 LAYOUTS = [('narrow', 480, 31, 27.2), ('mobile', 600, 31, 34), ('compact', 800, 27, 800 * 52 / 1200), ('medium', 960, 26, 960 * 52 / 1200), ('desktop', 1200, 24, 52)]
@@ -143,7 +171,7 @@ for name, label, _ in CONTACTS:
         content = f'<g transform="{transform}">{icon.replace("#648eaa", icon_color)}</g>' + content
         (OUT / 'contact' / f'blog-label-{name}-{mode}-{version}.svg').write_text(type.svg(width, 32, label, content))
 
-readme = (ROOT / 'README.md').read_text().split('</div>', 1)[0] + '</div>\n'
+readme = '<!-- The masthead and biography share one continuous skyline. -->\n'
 readme += '\n<div>\n'
 conditions = [('narrow', '(max-width: 360px)'), ('mobile', '(max-width: 480px)'), ('compact', '(max-width: 1000px)'), ('medium', '(max-width: 1199px)')]
 for mode in PALETTES:

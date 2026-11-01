@@ -1,24 +1,19 @@
-<div>
-<picture>
-  <source media="(max-width: 600px)" srcset="assets/research-header-mobile-v8.png">
-  <img src="assets/research-header-v8.png" width="100%" alt="Yongxue Xu (Jerry) — World models and embodied intelligence">
-</picture>
-</div>
+<!-- The masthead and biography share one continuous skyline. -->
 
 <div>
-<a href="assets/research-bio-desktop-light-v7.svg#gh-light-mode-only"><picture>
-  <source media="(max-width: 360px)" srcset="assets/research-bio-narrow-light-v7.svg#gh-light-mode-only">
-  <source media="(max-width: 480px)" srcset="assets/research-bio-mobile-light-v7.svg#gh-light-mode-only">
-  <source media="(max-width: 1000px)" srcset="assets/research-bio-compact-light-v7.svg#gh-light-mode-only">
-  <source media="(max-width: 1199px)" srcset="assets/research-bio-medium-light-v7.svg#gh-light-mode-only">
-  <img src="assets/research-bio-desktop-light-v7.svg#gh-light-mode-only" width="100%" alt="Undergraduate at Sun Yat-sen University &amp; Research Intern at SimpleAI My research focuses on world models, video generation, and embodied intelligence. At SimpleAI’s Simple World Lab, I work on embodied foundation models and frontier research in Physical Intelligence, exploring how generative models connect perception, reasoning, and action. I also develop AI-assisted research tools with InkMind.AI. I am currently applying for PhD positions in Hong Kong.">
+<a href="assets/research-bio-desktop-light-v8.svg#gh-light-mode-only"><picture>
+  <source media="(max-width: 360px)" srcset="assets/research-bio-narrow-light-v8.svg#gh-light-mode-only">
+  <source media="(max-width: 480px)" srcset="assets/research-bio-mobile-light-v8.svg#gh-light-mode-only">
+  <source media="(max-width: 1000px)" srcset="assets/research-bio-compact-light-v8.svg#gh-light-mode-only">
+  <source media="(max-width: 1199px)" srcset="assets/research-bio-medium-light-v8.svg#gh-light-mode-only">
+  <img src="assets/research-bio-desktop-light-v8.svg#gh-light-mode-only" width="100%" alt="Undergraduate at Sun Yat-sen University &amp; Research Intern at SimpleAI My research focuses on world models, video generation, and embodied intelligence. At SimpleAI’s Simple World Lab, I work on embodied foundation models and frontier research in Physical Intelligence, exploring how generative models connect perception, reasoning, and action. I also develop AI-assisted research tools with InkMind.AI. I am currently applying for PhD positions in Hong Kong.">
 </picture></a>
-<a href="assets/research-bio-desktop-dark-v7.svg#gh-dark-mode-only"><picture>
-  <source media="(max-width: 360px)" srcset="assets/research-bio-narrow-dark-v7.svg#gh-dark-mode-only">
-  <source media="(max-width: 480px)" srcset="assets/research-bio-mobile-dark-v7.svg#gh-dark-mode-only">
-  <source media="(max-width: 1000px)" srcset="assets/research-bio-compact-dark-v7.svg#gh-dark-mode-only">
-  <source media="(max-width: 1199px)" srcset="assets/research-bio-medium-dark-v7.svg#gh-dark-mode-only">
-  <img src="assets/research-bio-desktop-dark-v7.svg#gh-dark-mode-only" width="100%" alt="Undergraduate at Sun Yat-sen University &amp; Research Intern at SimpleAI My research focuses on world models, video generation, and embodied intelligence. At SimpleAI’s Simple World Lab, I work on embodied foundation models and frontier research in Physical Intelligence, exploring how generative models connect perception, reasoning, and action. I also develop AI-assisted research tools with InkMind.AI. I am currently applying for PhD positions in Hong Kong.">
+<a href="assets/research-bio-desktop-dark-v8.svg#gh-dark-mode-only"><picture>
+  <source media="(max-width: 360px)" srcset="assets/research-bio-narrow-dark-v8.svg#gh-dark-mode-only">
+  <source media="(max-width: 480px)" srcset="assets/research-bio-mobile-dark-v8.svg#gh-dark-mode-only">
+  <source media="(max-width: 1000px)" srcset="assets/research-bio-compact-dark-v8.svg#gh-dark-mode-only">
+  <source media="(max-width: 1199px)" srcset="assets/research-bio-medium-dark-v8.svg#gh-dark-mode-only">
+  <img src="assets/research-bio-desktop-dark-v8.svg#gh-dark-mode-only" width="100%" alt="Undergraduate at Sun Yat-sen University &amp; Research Intern at SimpleAI My research focuses on world models, video generation, and embodied intelligence. At SimpleAI’s Simple World Lab, I work on embodied foundation models and frontier research in Physical Intelligence, exploring how generative models connect perception, reasoning, and action. I also develop AI-assisted research tools with InkMind.AI. I am currently applying for PhD positions in Hong Kong.">
 </picture></a>
 </div>
 
