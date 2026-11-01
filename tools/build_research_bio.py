@@ -15,7 +15,7 @@ PARAGRAPHS = [
     'I am currently applying for PhD positions in Hong Kong.',
 ]
 ALT = ' '.join(' '.join(PARAGRAPHS).split())
-BIO_VERSION = 'v5'
+BIO_VERSION = 'v6'
 HIGHLIGHTS = {0: ['Sun Yat-sen University', 'SimpleAI'], 2: ['applying for PhD positions in Hong Kong']}
 PALETTES = {'light': ('#292e33', '#14191f'), 'dark': ('#d0d7de', '#edf2f7')}
 
@@ -63,7 +63,7 @@ class Type:
     def measure(self, value, size, weight=400):
         return self.layout(value, size, weight)[1]
 
-    def draw(self, value, x, y, size, color, weight=400):
+    def draw(self, value, x, y, size, color, weight=400, optical_weight=False):
         positions, advance, scale = self.layout(value, size, weight)
         glyphs = FONTS[weight].getGlyphSet()
         result = []
@@ -74,7 +74,9 @@ class Type:
                 glyphs[glyph].draw(pen)
                 self.defs[key] = f'<path id="{key}" d="{pen.getCommands()}"/>'
             result.append(f'<use href="#{key}" xlink:href="#{key}" transform="translate({x+offset:.3f} {y:.3f}) scale({scale:.6f} {-scale:.6f})"/>')
-        return f'<g fill="{color}">{"".join(result)}</g>', advance
+        # Stroke is in font units, so the added weight scales with each glyph.
+        stroke = f' stroke="{color}" stroke-width="14" stroke-linejoin="round" paint-order="stroke fill"' if optical_weight else ''
+        return f'<g fill="{color}"{stroke}>{"".join(result)}</g>', advance
 
     def svg(self, width, height, title, content):
         return f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img"><title>{escape(title)}</title><defs>{"".join(self.defs.values())}</defs>{content}</svg>\n'
@@ -102,7 +104,7 @@ def biography(layout, width, size, inset, mode):
                 gap = 0
                 y += line_height
             assert word_width < width - 2 * inset
-            rendered, _ = type.draw(word, x + gap, y, size, strong if weight == 700 else color, weight)
+            rendered, _ = type.draw(word, x + gap, y, size, strong if weight == 700 else color, weight, optical_weight=weight == 400)
             body.append(rendered)
             x += gap + word_width
         y += line_height + size * .36
