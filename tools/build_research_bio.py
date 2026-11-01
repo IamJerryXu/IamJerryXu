@@ -15,9 +15,9 @@ PARAGRAPHS = [
     'I am currently applying for PhD positions in Hong Kong.',
 ]
 ALT = ' '.join(' '.join(PARAGRAPHS).split())
-BIO_VERSION = 'v6'
+BIO_VERSION = 'v7'
 HIGHLIGHTS = {0: ['Sun Yat-sen University', 'SimpleAI'], 2: ['applying for PhD positions in Hong Kong']}
-PALETTES = {'light': ('#292e33', '#14191f'), 'dark': ('#d0d7de', '#edf2f7')}
+PALETTES = {'light': ('#41474e', '#14191f'), 'dark': ('#d0d7de', '#edf2f7')}
 
 
 def kern(font, left, right):
